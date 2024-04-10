@@ -1,11 +1,7 @@
-import { IRootState } from "../../libs/store";
-import {
- increment,
- decrement,
- reset,
- incrementByAmount,
-} from "../../libs/slice";
-import Button from "../ui/button";
+import { IRootState } from "@/libs/store";
+import { increment, decrement, reset, incrementByAmount } from "@/libs/slice";
+import { Button } from "@/components/ui/button";
+import { ModeToggle } from "@/components/mode-toggle";
 import { useDispatch, useSelector } from "react-redux";
 import React from "react";
 
@@ -18,33 +14,30 @@ const Counter = () => {
  return (
   <div
    className="
-  w-full 
-  flex 
-  flex-col 
-  font-mono 
-  justify-center 
-  items-center 
-  min-h-screen 
-  space-y-8 
-  bg-zinc-200
+   container 
+   px-4 
+   md:px-8 
+   flex-grow 
+   flex 
+   flex-col 
+   justify-center
+   items-center
+   min-h-screen
+   gap-8
   "
   >
    <h1
     className="
    text-3xl 
    font-bold
+   text-center
    "
    >
     Counter using Redux Toolkit
    </h1>
    <div
     className="
-   w-1/4 bg-white 
-   p-2 
-   rounded-md 
-   border-zinc-800 
-   border-[0.5px] 
-   shadow-md
+    w-1/4 py-1 px-3 dark:bg-zinc-200 dark:text-zinc-800 font-semibold rounded-md border-zinc-800 border-[0.5px] shadow-md dark:shadow-zinc-700
    "
    >
     <p>Count: {counter}</p>
@@ -59,15 +52,20 @@ const Counter = () => {
    "
    >
     <Button
-     text="Increment (+)"
+     variant={"outline"}
      onClick={() => dispatch(increment())}
      type="button"
-    />
+    >
+     ( + )
+    </Button>
+
     <Button
-     text="Decrement (-)"
+     variant={"outline"}
      onClick={() => dispatch(decrement())}
      type="button"
-    />
+    >
+     ( - )
+    </Button>
    </div>
    <div
     className="
@@ -77,12 +75,16 @@ const Counter = () => {
    justify-center
    "
    >
-    <Button text="Reset (0)" onClick={() => dispatch(reset())} type="button" />
+    <Button variant={"outline"} onClick={() => dispatch(reset())} type="button">
+     ( Reset )
+    </Button>
     <Button
-     text="Add (100)"
+     variant={"outline"}
      onClick={() => dispatch(incrementByAmount(100))}
      type="button"
-    />
+    >
+     ( + 100 )
+    </Button>
    </div>
    <div
     className="
@@ -103,7 +105,7 @@ const Counter = () => {
     >
      <input
       type="number"
-      className="w-1/4 bg-white p-2 rounded-md border-zinc-800 border-[0.5px] shadow-md"
+      className="w-1/4 py-1 px-3 dark:bg-zinc-200 dark:text-zinc-800 font-semibold rounded-md border-zinc-800 border-[0.5px] shadow-md dark:shadow-zinc-700"
       value={value}
       onChange={(e) => {
        if (!e.target.value) return setValue("");
@@ -111,8 +113,26 @@ const Counter = () => {
        setValue(String(e.target.value));
       }}
      />
-     <Button text="Add" type="submit" />
+     <Button variant={"outline"} type="submit">
+      Add ( + Your input value )
+     </Button>
     </form>
+   </div>
+   <div
+    className="
+   justify-center
+   "
+   >
+    <h1
+     className="
+   text-3xl 
+   font-bold
+   text-center
+   "
+    >
+     Theme light, dark, system using context & custom hooks
+    </h1>
+    <ModeToggle />
    </div>
   </div>
  );

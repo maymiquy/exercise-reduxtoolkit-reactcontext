@@ -1,13 +1,16 @@
+import Counter from "@/components/partials/Counter";
+import { ThemeProvider } from "@/context/ThemeContext";
 import { Provider } from "react-redux";
-import { store } from "./libs/store";
-import Counter from "./components/partials/Counter";
+import { store } from "@/libs/store";
 
 function App() {
  return (
   <>
-   <Provider store={store}>
-    <Counter />
-   </Provider>
+   <ThemeProvider>
+    <Provider store={store}>
+     <Counter />
+    </Provider>
+   </ThemeProvider>
   </>
  );
 }

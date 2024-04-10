@@ -7,6 +7,7 @@ This my excercise to learn global `state` managament `Redux` and `Context` with 
 - React
 - Redux Toolkit
 - TypeScript
+- Custom Hooks
 - Context
 
 ## Expanding the ESLint configuration
